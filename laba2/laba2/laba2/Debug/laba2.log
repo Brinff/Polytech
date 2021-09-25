@@ -1,0 +1,3 @@
+﻿  laba2.cpp
+C:\Users\Пользователь\Labs\laba2\laba2\laba2\laba2.cpp(34,26): warning C4305: инициализация: усечение из "double" в "float"
+  laba2.vcxproj -> C:\Users\Пользователь\Labs\laba2\laba2\Debug\laba2.exe
