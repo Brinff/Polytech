@@ -1,5 +1,6 @@
 #include <iostream>
-#include <math.h>
+#include <cmath>
+#include <iomanip>
 #include <locale>
 using namespace std;
 
@@ -127,7 +128,7 @@ int main()
 
 		case 5:
 		{
-			int x1 = 0, x2 = 0, y1 = 0, y2 = 0, x3 = 0, y3 = 0;
+			float x1 = 0, x2 = 0, y1 = 0, y2 = 0, x3 = 0, y3 = 0, d = 0;
 
 			cout << "\nДля того, чтобы найти периметр и площадь треугольника по координатам его вершин, введите x1, y1, x2, y2, x3, y3:  ";
 
@@ -146,7 +147,11 @@ int main()
 			cin >> x3;
 			cin >> y3;
 
-			cout << "\nВаш результат: \nПлощадь: " << (1 / 2) * abs((x2 - x1) * (y3 - y1) - (x3 - x1) * (y2 - y1));
+			d = fabs((x2 - x1) * (y3 - y1) - (x3 - x1) * (y2 - y1)) / 2;
+
+
+
+			cout << "\nВаш результат: \nПлощадь: " << d;
 			cout << "\nПериметр: " << sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)) + sqrt((x3 - x1) * (x3 - x1) + (y3 - y1) * (y3 - y1)) + sqrt((x3 - x2) * (x3 - x2) + (y3 - y2) * (y3 - y2));
 
 			break;
