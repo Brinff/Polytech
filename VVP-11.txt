@@ -1,0 +1,199 @@
+#include <iostream>
+#include <locale>
+#include <math.h>
+#include <string>
+using namespace std;
+
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	int various;
+	cout << "\nВыберите задание из списка:\n1.Сравнение А и В\n2.Сумма больших из трех чисел\n3.Какая из двух точек ближе к точке А и расстояние\n4.Определить номер координатной четверти точки\n5.Описание целого числа\n6.Описание числа в диапозоне 1-999\n";
+	cin >> various;
+
+	switch (various)
+	{
+		case 1:
+			{
+				int a, b;
+				cout << "\nВведите целые числа, чтобы узнать результат";
+
+				cout << "\nВведите А: ";
+				cin >> a;
+				cout << "\nВведите B: ";
+				cin >> b;
+
+				if (a == b)
+				{
+					a = 0; b = 0;
+					cout << "\nВаш результат: " << a << " и " << b;
+					
+				}
+				else
+				{
+					if (a > b)
+					{
+						b = a;
+						cout << "\nВаш результат: " << a << " и " << b;
+						
+					}
+					else
+					{
+						a = b;
+						cout << "\nВаш результат: " << a << " и " << b;
+						
+					}
+					
+				}
+				break;
+			}
+
+		case 2:
+		{
+			int a, b, c;
+
+			cout << "\nВведите 3 РАЗНЫХ целых числа, чтобы найти сумму двух больших из них: ";
+
+			cout << "\nВведите А: ";
+			cin >> a;
+			cout << "\nВведите B: ";
+			cin >> b;
+			cout << "\nВведите C: ";
+			cin >> c;
+
+			if (a < b and a < c)
+				cout << "\nВаш результат: " << b + c << endl;
+			else if (b < a and b < c)
+				cout << "\nВаш результат: " << a + c << endl;
+			else 
+				cout << "\nВаш результат: " << b + a << endl;
+
+			break;
+		}
+
+		case 3:
+		{
+			int a, b, c, t, d;
+			cout << "\nВведите координаты точек: ";
+
+			cout << "\nВведите А: ";
+			cin >> a;
+			cout << "\nВведите B: ";
+			cin >> b;
+			cout << "\nВведите C: ";
+			cin >> c;
+
+			t = fabs(a - b);
+			d = fabs(a - c);
+
+			if (t == d)
+			{
+				cout << "\nОбе точки находятся на одинаковом расстоянии от А, оно равно " << d;
+			}
+			else if (t < d)
+			{
+				cout << "\nВ находится ближе к А, чем С, расстояние : " << t;
+			}
+			else
+				cout << "\nC находится ближе к А, чем B, расстояние : " << d;
+			break;
+
+
+		}
+
+		case 4:
+		{
+			int x, y, d;
+			cout << "\nВведите х и у не равные нулю: ";
+
+			cout << "\nx = ";
+			cin >> x;
+			cout << "\ny = ";
+			cin >> y;
+
+			if (x > 0 and y > 0)
+				cout << "\n1 четверть";
+			else if (x < 0 and y > 0)
+				cout << "\n2 четверть";
+			else if (x < 0 and y < 0)
+				cout << "\n3 четверть";
+			else if (x > 0 and y < 0)
+				cout << "\n4 четвeрть";
+
+			break;
+		}
+
+		case 5:
+		{
+			int a;
+			string chet("четное ");
+			string nechet("нечетное ");
+			string pol("положительное ");
+			string otr("отрицательное ");
+			string osn("число");
+
+			cout << "\nВведите число, чтобы его описать: ";
+			cin >> a;
+
+			if (a > 0)
+			{
+				if (a % 2 == 0)
+					cout << "\n" << pol << chet << osn;
+				else
+					cout << "\n" << pol << nechet << osn;
+			}
+			else if (a == 0)
+				cout << "\nнулевое число";
+			else
+			{
+				if (a % 2 == 0)
+					cout << "\n" << otr << chet << osn;
+				else
+					cout << "\n" << otr << nechet << osn;
+			}
+			break;
+
+		}
+		case 6:
+		{
+			int a;
+			string chet("четное ");
+			string nechet("нечетное ");
+			string cif("цифра, ");
+			string dvuh("двухзначное ");
+			string treh("трехзначное ");
+			string osn("число");
+
+			cout << "\nВведите число, чтобы его описать: ";
+			cin >> a;
+
+			if (a < 10)
+			{
+				if (a % 2 == 0)
+					cout << "\n" << cif << chet << osn;
+				else
+					cout << "\n" << cif << nechet << osn;
+			}
+			else if (a / 10 < 10)
+			{
+				if (a % 2 == 0)
+					cout << "\n" << dvuh << chet << osn;
+				else
+					cout << "\n" << dvuh << nechet << osn;
+			}
+			else if (a / 10 >= 10)
+			{
+				if (a % 2 == 0)
+					cout << "\n" << treh << chet << osn;
+				else
+					cout << "\n" << treh << nechet << osn;
+			}
+			break;
+		}
+		default:
+			cout << "\nВы ввели неверное значение.";
+
+	}
+	return 0;
+}
