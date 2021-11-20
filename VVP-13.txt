@@ -1,0 +1,111 @@
+#include <iostream>
+#include <locale>
+#include <cmath>
+using namespace std;
+
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	int various;
+	cout << "\nВведите номер задания:\n1.Вывести стоимость граммовки конфет\n2.Найти произведение N сомножителей\n3.Найти квадрат данного числа по формуле сумм\n4.Найти сумму степеней числа через 1 цикл\n5.Используя один цикл найти значения данного выражения\n";
+	cin >> various;
+	switch (various) 
+	{
+		case 1:
+		{
+			float cena;
+			cout << "\nВведите цену за килограмм, чтобы узнать цену за граммовку: ";
+			cin >> cena;
+
+			cout << "\n0.1 кг: " << cena / 10;
+			cout << "\n0.2 кг: " << (cena / 10) * 2;
+			cout << "\n0.3 кг: " << (cena / 10) * 3;
+			cout << "\n0.4 кг: " << (cena / 10) * 4;
+			cout << "\n0.5 кг: " << (cena / 10) * 5;
+			cout << "\n0.6 кг: " << (cena / 10) * 6;
+			cout << "\n0.7 кг: " << (cena / 10) * 7;
+			cout << "\n0.8 кг: " << (cena / 10) * 8;
+			cout << "\n0.9 кг: " << (cena / 10) * 9;
+			cout << "\n1 кг: " << cena;
+			break;
+			
+		}
+
+		case 2:
+		{
+			int a;
+			double b = 1, c = 1.1;
+			cout << "\nВведите число А, чтобы найти произведение А сомножителей (+0.1): ";
+			cin >> a;
+
+
+
+			for (int i = 1; i <= a; ++i)
+			{
+				b *= c;
+				c += 0.1;
+			}
+
+			cout << "\n= " << b;
+			break;
+		}
+
+		case 3:
+		{
+			int a, b = 0;
+			cout << "\nВведите число А, чтобы найти квадрат А формулой сумм: ";
+			cin >> a;
+
+			for (int i = 1; b != (a * a); i = i + 2)
+			{
+				b = b + i;
+				cout << "\n " << b;
+
+
+			}
+			break;
+		}
+
+		case 4:
+		{
+			int n;
+			double a, sum = 0;
+			cout << "\nВведите число А и число N, чтобы используя один цикл, найти сумму 1 + A + A^2 + A^3 + . . . + A^N"; 
+
+			cout << "\nВведите А: "; cin >> a;
+			cout << "\nВведите N: "; cin >> n;
+
+			for (int i = 0; i <= n; ++i)
+			{
+		
+				sum = sum + pow(a, i);
+			}
+			cout << "\n" << sum;
+			
+			break;
+
+		}
+
+		case 5:
+		{
+			int n;
+			double a, sum = 0;
+			cout << "\nВведите число А и число N, чтобы используя один цикл, найти сумму 1 - A + A^2 - A^3 + . . . +- A^N";
+
+			cout << "\nВведите А: "; cin >> a;
+			cout << "\nВведите N: "; cin >> n;
+
+			for (int i = 0; i <= n; i = i + 2)
+			{
+				int j = i + 1;
+				sum = sum + pow(a, i);
+				sum = sum - pow(a, j);
+			}
+			cout << "\n" << sum;
+
+			break;
+		}
+	}
+	return 0;
+}
