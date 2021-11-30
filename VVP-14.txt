@@ -1,0 +1,134 @@
+#include <iostream>
+#include <locale>
+#include <vector>
+using namespace std;
+
+
+int main()
+{
+	int various;
+	setlocale(LC_ALL, "Rus");
+	cout << "\nВведите номер задания, которое желаете проверить:\n1.Вывести все целые числа от A до B включительно.\n2.Найти длину незанятой части отрезка A.\n3.Вывести наименьшее из целых чисел K, для которых сумма будет больше или равна N, и саму эту сумму.\n4.По данному P определить, через сколько месяцев размер вклада превысит 1100 руб., и вывести найденное количество месяцев K и итоговый размер вклада S.\n5.Найти наибольший общий делитель (НОД), используя алгоритм Евклида.\n6.Найти целое число K — порядковый номер числа Фибоначчи N.\n";
+	cin >> various;
+
+	switch (various)
+	{
+		case 1:
+		{
+			int a, b;
+			cout << "\nВведите числа А и В в порядке возрастания: ";
+			cout << "\nA: "; cin >> a;
+			cout << "\nB: "; cin >> b;
+
+			for (int i = a; i <= b; i++)
+			{
+				for (int j = 1; j <= i; j++)
+				{
+					cout << i;
+				}
+				cout << "\n ";
+			}
+			break;
+		}
+
+		case 2:
+		{
+			int a, b;
+			cout << "\nВведите А и В в порядке уменьшения: ";
+			cout << "\nA: "; cin >> a;
+			cout << "\nB: "; cin >> b;
+
+			while (a >= b)
+			{
+				a = a - b;
+			}
+
+			cout << "\n" << a;
+			break;
+		}
+
+		case 3:
+		{
+			int k, n, sum = 0;
+			cout << "\nВведите N: ";
+			cin >> n;
+
+			for (int i = 1; sum < n; i++)
+			{
+				sum = sum + i;
+				k = i;
+			}
+			cout << "\nСумма: " << sum;
+			cout << "\nЧисло k: " << k;
+			break;
+		}
+
+		case 4:
+		{
+			float vklad = 1000;
+			float p;
+			int mes;
+
+			cout << "\nВведите P (от 0 до 25): ";
+			cin >> p;
+
+			for (int i = 1; vklad <= 1100; i++)
+			{
+				vklad = vklad + (vklad * (p / 100));
+				mes = i;
+			}
+			cout << "\nИтоговый размер вклада: " << vklad;
+			cout << "\nЧисло месяцев: " << mes;
+
+		}
+
+		case 5:
+		{
+			int a, b;
+			cout << "\nВведите a и b, чтобы найти НОД";
+			cout << "\nA: "; cin >> a;
+			cout << "\nB: "; cin >> b;
+
+			while (a != 0 and b != 0)
+			{
+				if (a > b)
+				{
+					a = a % b;
+				}
+				else
+				{
+					b = b % a;
+				}
+			}
+
+			cout << "\nНОД: " << a + b;
+			break;
+		}
+
+		case 6:
+		{
+			int n, k = 1, d;
+			vector < int > arr;
+			cout << "\nВведите целое число N (число Фибоначчи), чтобы узнать его порядковый номер: "; cin >> n;
+			arr.push_back(0);
+			arr.push_back(1);
+			arr.push_back(1);
+			arr.push_back(2);
+
+			for (int i = 4; k < n; i++)
+			{
+				arr.push_back(arr[i-1]+arr[i-2]);
+				k = arr[i];
+				d = i;
+			}
+			cout << d;
+			break;
+
+		}
+
+		default:
+			cout << "\nВы ввели неверное значение.";
+	}
+	return 0;
+
+}
