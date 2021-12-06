@@ -1,0 +1,135 @@
+#include <iostream>
+#include <locale>
+using namespace std;
+
+float pi = 3.1415926535;
+
+float PowerA3(float A) //Описание функции первого задания
+{
+	float B;
+	B = A * A * A;
+	return B;
+}
+
+float Sign(float X) //Описание функции второго задания
+{
+	if (X < 0)
+		return -1;
+	else if (X == 0)
+		return 0;
+	else if (X > 0)
+		return 1;
+}
+
+float RingS(float R1, float R2) //Описание функции третьего задания
+{
+	float pls;
+	pls = pi * ((R1 * R1) - (R2 * R2));
+	return pls;
+}
+
+float Quarter(float x, float y)
+{
+	if (x > 0 and y > 0)
+		return 1;
+	else if (x < 0 and y > 0)
+		return 2;
+	else if (x < 0 and y < 0)
+		return 3;
+	else if (x > 0 and y < 0)
+		return 4;
+}
+
+unsigned long int Fact2(unsigned long int N)
+{
+	unsigned long int result;
+	if (N % 2 == 0)
+	{
+		if (N == 2)
+			return 2;
+		result = N * Fact2(N - 2);
+		return result;
+	}
+
+	else if (N % 2 != 0)
+	{
+		if (N == 1)
+			return 1;
+		result = N * Fact2(N - 2);
+		return result;
+	}
+}
+
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	int various;
+	cout << "\nВыберите функцию из списка:\n1.PowerA3(A, B)\n2.Sign(X)\n3.RingS(R1, R2)\n4.Quarter(x, y)\n5.Fact2(N)\n";
+	cin >> various;
+	
+
+	switch (various)
+	{
+		case 1:
+			{
+				float A;
+				cout << "\nВведите 5 чисел, чтобы найти их третью степень.";
+				
+				for (int i = 1; i < 6; i++)
+				{
+					cout << "\n" << i << ": "; cin >> A;
+					cout << PowerA3(A);
+				}
+				break;
+			}
+		case 2:
+			{
+				float A, B;
+				cout << "\nВведите А и В, чтобы найти сумму их функций sign";
+				cout << "\nA: "; cin >> A;
+				cout << "\nB: "; cin >> B;
+
+				cout << Sign(A) + Sign(B);
+
+				break;
+			}
+		case 3:
+			{
+				float r1, r2;
+				cout << "\nВведите 2 радиуса кругов (первый > второго) с центром в одной точке, чтобы найти площадь кольца внутри (3 раза).";
+
+				for (int i = 1; i < 4; i++)
+				{
+					cout << "\nВведите первый радиус: "; cin >> r1;
+					cout << "\nВведите второй радиус: "; cin >> r2;
+					cout << RingS(r1, r2);
+				}
+				break;
+
+			}
+		case 4:
+			{
+				float x, y;
+				cout << "\nВведите x и y, чтобы найти четверть, в которой находится данная точка (х и у не равны 0)";
+				cout << "\nx: "; cin >> x;
+				cout << "\ny: "; cin >> y;
+
+				cout << Quarter(x, y) << " четверть";
+
+				break;
+			}
+		case 5:
+			{
+				float n;
+				cout << "\nВведите n, чтобы найти его двойной факториал: "; cin >> n;
+
+				cout << Fact2(n);
+
+				break;
+			}
+		default:
+			cout << "\nВы ввели неверное значение. Попробуйте снова";
+	}
+	return 0;
+}
